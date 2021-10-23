@@ -7,9 +7,9 @@
         </x-slot>
 
         <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        {{-- <x-auth-validation-errors class="mb-4" :errors="$errors" /> --}}
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" novalidate>
             @csrf
 
             <!-- Name -->
@@ -17,6 +17,7 @@
                 <x-label for="name" :value="__('Name')" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                <x-validation-message name="name"/>
             </div>
 
             <!-- Email Address -->
@@ -24,6 +25,7 @@
                 <x-label for="email" :value="__('Email')" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-validation-message name="email"/>
             </div>
 
             <!-- Password -->
@@ -34,6 +36,7 @@
                                 type="password"
                                 name="password"
                                 required autocomplete="new-password" />
+                                <x-validation-message name="password"/>
             </div>
 
             <!-- Confirm Password -->
@@ -43,6 +46,7 @@
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
                                 name="password_confirmation" required />
+                                <x-validation-message name="password_confirmation"/>
             </div>
 
             <div class="flex items-center justify-end mt-4">
